@@ -3,74 +3,74 @@ import sqlite3
 banco = sqlite3.connect("petshop.db")
 
 cursor = banco.cursor()
-# print("Banco conectado!")
+print("Banco conectado!")
 
-# cursor.execute("""
-# CREATE TABLE IF NOT EXISTS pets (
-#     id INTEGER PRIMARY KEY AUTOINCREMENT,
-#     nome TEXT NOT NULL,
-#     especie TEXT,
-#     tutor TEXT,
-#     idade INTEGER
-# )
-# """)
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS pets (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    especie TEXT,
+    tutor TEXT,
+    idade INTEGER
+)
+""")
 
-# cursor.execute("""
-#     INSERT INTO pets (nome, especie, tutor, idade)
-#     VALUES
-#     ("Pikachu", "Hamster", "Manoel Gomes", "2"),
-#     ("Tortuguita", "Tartaruga", "Splinter", "1"),
-#     ("Uni", "Poney", "Mestre dos magos", "4"),
-#     ("Megazord", "Cachorro", "Vorcaro", "8"),
-#     ("Cachorro", "Gato", "Luisa Mel", "5")
-# """)
-# banco.commit()
+cursor.execute("""
+    INSERT INTO pets (nome, especie, tutor, idade)
+    VALUES
+    ("Pikachu", "Hamster", "Manoel Gomes", "2"),
+    ("Tortuguita", "Tartaruga", "Splinter", "1"),
+    ("Uni", "Poney", "Mestre dos magos", "4"),
+    ("Megazord", "Cachorro", "Vorcaro", "8"),
+    ("Cachorro", "Gato", "Luisa Mel", "5")
+""")
+banco.commit()
 
-# print("\n==============================")
-# print("BANCO DE DADOS")
-# print("==============================\n")
-# cursor.execute("""
-#     SELECT * FROM pets
-# """)
+print("\n==============================")
+print("BANCO DE DADOS")
+print("==============================\n")
+cursor.execute("""
+    SELECT * FROM pets
+""")
 
-# print("\n==============================")
-# print("SOMENTE ESPÉCIE - CACHORRO")
-# print("==============================\n")
+print("\n==============================")
+print("SOMENTE ESPÉCIE - CACHORRO")
+print("==============================\n")
 
-# cursor.execute("""
-#     SELECT * FROM pets
-#     WHERE especie = "Cachorro"
-# """)
-# print(cursor.fetchall())
+cursor.execute("""
+    SELECT * FROM pets
+    WHERE especie = "Cachorro"
+""")
+print(cursor.fetchall())
 
-# print("\n==============================")
-# print("ATUALIZAÇÃO - TUTOR")
-# print("==============================\n")
+print("\n==============================")
+print("ATUALIZAÇÃO - TUTOR")
+print("==============================\n")
 
-# cursor.execute("""
-#     UPDATE pets SET tutor = "Zé da manga" WHERE id = 1
-# """)
-# banco.commit()
-# print("O nome do tutor foi atualizado!")
+cursor.execute("""
+    UPDATE pets SET tutor = "Zé da manga" WHERE id = 1
+""")
+banco.commit()
+print("O nome do tutor foi atualizado!")
 
-# print("\n==============================")
-# print("EXCLUSÃO - PET")
-# print("==============================\n")
+print("\n==============================")
+print("EXCLUSÃO - PET")
+print("==============================\n")
 
-# cursor.execute("DELETE FROM pets WHERE id = 3")
-# banco.commit()
-# print("O pet foi deletado do banco!")
+cursor.execute("DELETE FROM pets WHERE id = 3")
+banco.commit()
+print("O pet foi deletado do banco!")
 
 print("\n==============================")
 print("EXTRA - NOME E TUTOR")
 print("==============================\n")
 
 cursor.execute("""
-    SELECT * FROM pets
-    WHERE nome
+    SELECT nome, tutor FROM pets
+    WHERE especie = "Cachorro"
 """)
 print(cursor.fetchall())
 
 
-# cursor.execute("DROP TABLE pets")
-# banco.commit()
+cursor.execute("DROP TABLE pets")
+banco.commit()
