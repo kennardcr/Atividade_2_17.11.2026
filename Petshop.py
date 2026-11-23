@@ -80,6 +80,7 @@ try:
             GROUP BY nome
         )
     """)
+    
 except sqlite3.Error as erro:
     print("Erro no banco de dados:", erro)
     
@@ -87,4 +88,4 @@ except sqlite3.Error as erro:
 finally:
     if banco is not None:
         banco.close()
-        
+
